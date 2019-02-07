@@ -34,20 +34,25 @@ public class Queue<T> implements Iterable<T>, IQueue<T> {
 
   @Override
   public void enqueue(T t) {
+
     if (t != null) {
       Node<T> nuevo = new Node<T>(t);
       if (size == 0) {
         head = nuevo;
         last = nuevo;
-        head.cambiarSiguiente(nuevo);
-        last.cambiarAnterior(nuevo);
-      } else if (size == 1) {
+        head.cambiarSiguiente(last);
+        last.cambiarAnterior(head);
+        size = 2;
+      } else if (size == 2) {
+        head = nuevo;
+        head.cambiarSiguiente(last);
+        last.cambiarAnterior(head);
+        size++;
+      } else {
         head.cambiarAnterior(nuevo);
         nuevo.cambiarSiguiente(head);
         head = nuevo;
-
-      } else {
-
+        size++;
       }
     }
 
@@ -55,8 +60,28 @@ public class Queue<T> implements Iterable<T>, IQueue<T> {
 
   @Override
   public T dequeue() {
-    // TODO Auto-generated method stub
-    return null;
+    Node<T> retorno = new Node<T>(null);
+    if (size != 0) {
+
+      if (size == 1) {
+        retorno = head;
+        head = null;
+      } else if (size == 2) {
+        retorno = last;
+        size--;
+        head.cambiarSiguiente(null);
+
+      } else {
+
+        retorno = last;
+        last = last.darAnterior();
+        last.cambiarSiguiente(null);
+        size--;
+
+      }
+
+    }
+    return retorno.darElement();
   }
 
 }
