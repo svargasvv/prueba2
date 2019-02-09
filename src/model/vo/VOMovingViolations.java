@@ -5,133 +5,57 @@ package model.vo;
  */
 public class VOMovingViolations {
 
-  private int objectId;
+	//Atributos 
+	//----------------------------------------------------------------
+	private int object_ID;
+	private String location; 
+	private String ticketDate;
+	private String violationDesc; 
+	
+	public VOMovingViolations(String pObject_ID, String pLocation, String pTicketDate, String pViolationDesc)
+	{
+		object_ID= Integer.parseInt(pObject_ID);
+		location = pLocation;
+		ticketDate = pTicketDate;
+		violationDesc = pViolationDesc;
+		
+		
+		
+		// TODO Auto-generated constructor stub
+	}
 
-  private String location;
 
-  private int addressId;
+	/**
+	 * @return id - Identificador único de la infracción
+	 */
+	public int objectId() {
+		// TODO Auto-generated method stub
+		return object_ID;
+	}	
+	
+	
+	/**
+	 * @return location - Dirección en formato de texto.
+	 */
+	public String getLocation() {
+		// TODO Auto-generated method stub
+		return location;
+	}
 
-  private int streetSegId;
-
-  private float xCoord;
-
-  private float yCoord;
-
-  private String type;
-
-  private int fineAMT;
-
-  private int totalPaid;
-
-  private int penalty1;
-
-  private int penalty2;
-
-  private String accidentIndicator;
-
-  private String ticketIssue;
-
-  private String violationCode;
-
-  private String violationDesc;
-
-  /**
-   * Constructs new VOMovingViolation
-   * @param objectId
-   * @param location
-   * @param addressId
-   * @param streetSegId
-   * @param xCoord
-   * @param yCoord
-   * @param type
-   * @param fineAMT
-   * @param totalPaid
-   * @param penalty1
-   * @param penalty2
-   * @param accidentIndicator
-   * @param ticketIssue
-   * @param violationCode
-   * @param violationDesc
-   */
-  public VOMovingViolations(int objectId, String location, int addressId, int streetSegId,
-      float xCoord, float yCoord, String type, int fineAMT, int totalPaid, int penalty1,
-      int penalty2,
-      String accidentIndicator, String ticketIssue, String violationCode,
-      String violationDesc) {
-    this.objectId = objectId;
-    this.location = location;
-    this.addressId = addressId;
-    this.streetSegId = streetSegId;
-    this.xCoord = xCoord;
-    this.yCoord = yCoord;
-    this.type = type;
-    this.fineAMT = fineAMT;
-    this.totalPaid = totalPaid;
-    this.penalty1 = penalty1;
-    this.penalty2 = penalty2;
-    this.accidentIndicator = accidentIndicator;
-    this.ticketIssue = ticketIssue;
-    this.violationCode = violationCode;
-    this.violationDesc = violationDesc;
-  }
-
-  public int objectId() {
-    return objectId;
-  }
-
-  public String getLocation() {
-    return location;
-  }
-
-  public int getAddressId() {
-    return addressId;
-  }
-
-  public int getStreetSegId() {
-    return streetSegId;
-  }
-
-  public float getxCoord() {
-    return xCoord;
-  }
-
-  public float getyCoord() {
-    return yCoord;
-  }
-
-  public String getType() {
-    return type;
-  }
-
-  public int getFineAMT() {
-    return fineAMT;
-  }
-
-  public int getTotalPaid() {
-    return totalPaid;
-  }
-
-  public int getPenalty1() {
-    return penalty1;
-  }
-
-  public int getPenalty2() {
-    return penalty2;
-  }
-
-  public String getAccidentIndicator() {
-    return accidentIndicator;
-  }
-
-  public String getTicketIssueDate() {
-    return ticketIssue;
-  }
-
-  public String getViolationCode() {
-    return violationCode;
-  }
-
-  public String getViolationDescription() {
-    return violationDesc;
-  }
+	/**
+	 * @return date - Fecha cuando se puso la infracción .
+	 */
+	public String getTicketIssueDate() {
+		// TODO Auto-generated method stub
+		return ticketDate;
+	}
+	
+	public String getViolationDescription()
+	{
+		return violationDesc;
+	}
+	/**
+	 * @return totalPaid - Cuanto dinero efectivamente pagó el que recibió la infracción en USD.
+	 */
+	
 }

@@ -4,6 +4,9 @@ import java.util.Scanner;
 
 import model.data_structures.IQueue;
 import model.data_structures.IStack;
+import model.data_structures.Queue;
+import model.data_structures.Stack;
+import model.logic.MovingViolationsManager;
 import model.vo.VODaylyStatistic;
 import model.vo.VOMovingViolations;
 import view.MovingViolationsManagerView;
@@ -11,24 +14,24 @@ import view.MovingViolationsManagerView;
 public class Controller {
  
 	private MovingViolationsManagerView view;
-	
+	private static MovingViolationsManager  manager = new MovingViolationsManager();
 	/**
 	 * Cola donde se van a cargar los datos de los archivos
 	 */
-	private IQueue<VOMovingViolations> movingViolationsQueue;
+	private Queue<VODaylyStatistic> movingViolationsQueue;
 	
 	/**
 	 * Pila donde se van a cargar los datos de los archivos
 	 */
-	private IStack<VOMovingViolations> movingViolationsStack;
+	private Stack<VOMovingViolations> movingViolationsStack;
 
 
 	public Controller() {
 		view = new MovingViolationsManagerView();
-		
+		manager = new MovingViolationsManager();
 		//TODO, inicializar la pila y la cola
-		movingViolationsQueue = null;
-		movingViolationsStack = null;
+		movingViolationsQueue = new Queue<VODaylyStatistic>();
+		movingViolationsStack = new Stack <VOMovingViolations>();
 	}
 	
 	public void run() {
@@ -71,7 +74,8 @@ public class Controller {
 	
 
 	public void loadMovingViolations() {
-		// TODO
+		
+	
 	}
 	
 	public IQueue <VODaylyStatistic> getDailyStatistics () {
