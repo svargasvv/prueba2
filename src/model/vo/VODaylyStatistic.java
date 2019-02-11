@@ -1,5 +1,7 @@
 package model.vo;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class VODaylyStatistic {
@@ -14,10 +16,17 @@ public class VODaylyStatistic {
 
 	public VODaylyStatistic( String pFineAMT,  String pAccidentIndicator , String pTicketDate)
 	{
-
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+	 
 		fineAMT= Short.parseShort(pFineAMT);
 		accidentIndicator=(pAccidentIndicator.equals("Yes"))? true : false;
-		ticketDate = null; //IMPLEMENTAR
+		try {
+			ticketDate = sdf.parse(pTicketDate);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			ticketDate= null;
+		} //IMPLEMENTAR
 
 
 
@@ -26,10 +35,15 @@ public class VODaylyStatistic {
 	}
 
 
-	/**
-	 * @return id - Identificador único de la infracción
-	 */
-
+	public Date darFecha()
+	{
+		return ticketDate;
+	}
+	
+	public short darDinero()
+	{
+		return fineAMT;
+	}
 
 	/**
 	 * @return accidentIndicator - Si hubo un accidente o no.

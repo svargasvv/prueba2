@@ -74,6 +74,8 @@ public class Controller {
 	
 
 	public void loadMovingViolations() {
+		manager.loadMovingViolationsJanuary("data/Moving_Violations_Issued_in_January_2018_ordered");
+		manager.loadMovingViolationsFebruary("data/Moving_Violations_Issued_in_February_2018_ordered");
 		
 	
 	}
