@@ -14,6 +14,7 @@ import model.data_structures.Stack;
 import model.vo.VODaylyStatistic;
 import model.vo.VOMovingViolations;
 
+
 public class MovingViolationsManager {
 
   /**
@@ -69,6 +70,10 @@ public class MovingViolationsManager {
           }
 
           System.out.println(datosActual.get(0));
+
+          if(counter == 84020){
+            System.out.println("Line found");
+          }
 
 
           SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
