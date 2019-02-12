@@ -68,19 +68,12 @@ public class MovingViolationsManager {
             datosActual.add(st.nextToken());
 
           }
-          
-          
-
-        
-
-          if(counter == 84020){
-            System.out.println("Line found");
-          }
-
 
           SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-          Date ticketDate = df.parse(datosActual.get(13).substring(0, 10));
+          String date = datosActual.get(13).substring(0, 10);
+          Date ticketDate = df.parse(date);
           boolean huboAccidente = datosActual.get(12).equals("Yes");
+
 
           /*
           Este codigo registra las estadisticas diarias del archivo en objetos VODaylyStatistics
@@ -95,11 +88,13 @@ public class MovingViolationsManager {
             if(dayStats.getDate().equals(ticketDate)){
               dayStats.increaseTotalAMT(Integer.valueOf(datosActual.get(8)));
               dayStats.increaseSize();
+              //System.out.println(dayStats.getSize());
               if(huboAccidente)
                 dayStats.increaseDayAccidents();
             }
             else{
               statisticsQueue.enqueue(dayStats);
+              System.out.println(statisticsQueue.size() + " " + ticketDate);
               dayStats = new VODaylyStatistic();
               dayStats.increaseTotalAMT(Integer.valueOf(datosActual.get(8)));
               if(huboAccidente)
@@ -110,6 +105,10 @@ public class MovingViolationsManager {
           }
           //Si aun no se ha inicializado el primer dia
           else{
+            if(statisticsQueue.isEmpty()){
+              statisticsQueue.enqueue(dayStats);
+              System.out.println(statisticsQueue.size() + " " + ticketDate);
+            }
             dayStats.setDate(ticketDate);
             dayStats.increaseTotalAMT(Integer.valueOf(datosActual.get(8)));
             if(huboAccidente)
