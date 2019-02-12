@@ -2,41 +2,86 @@ package model.vo;
 
 import java.util.Date;
 
+/**
+ *
+ */
 public class VODaylyStatistic {
 
-	//Atributos 
-	//----------------------------------------------------------------
+  //Atributos
+  //----------------------------------------------------------------
 
-	private short fineAMT;
-	private boolean accidentIndicator; 
-	private Date ticketDate;
+  /**
+   * valor AMT pagado por el infractor de la multa
+   */
+  private short fineAMTTotal;
 
+  /**
+   * cantidad de accidentes del dia
+   */
+  private int dayAccidents;
 
-	public VODaylyStatistic( String pFineAMT,  String pAccidentIndicator , String pTicketDate)
-	{
+  /**
+   * fecha del dia
+   */
+  private Date ticketDate;
 
-		fineAMT= Short.parseShort(pFineAMT);
-		accidentIndicator=(pAccidentIndicator.equals("Yes"))? true : false;
-		ticketDate = null; //IMPLEMENTAR
+  /**
+   * Constructor vacio de la clase
+   */
+  public VODaylyStatistic(){
 
+    fineAMTTotal = 0;
+    dayAccidents = 0;
 
+  }
 
+  /**
+   * Incrementa la cantidad de accidentes del dia
+   */
+  public void increaseDayAccidents(){
 
-		// TODO Auto-generated constructor stub
-	}
+    dayAccidents++;
 
+  }
 
-	/**
-	 * @return id - Identificador único de la infracción
-	 */
+  /**
+   * incrementa el total AMT del dia
+   * @param amt valor que se agrega al total
+   */
+  public void increaseTotalAMT(short amt){
 
+    fineAMTTotal += amt;
 
-	/**
-	 * @return accidentIndicator - Si hubo un accidente o no.
-	 */
-	public boolean  getAccidentIndicator() {
-		// TODO Auto-generated method stub
-		return accidentIndicator;
-	}
+  }
+
+  /**
+   * Inicializa la fecha del dia, si la fecha ya esta inicializada no funciona
+   * @param date nueva fecha que se asigna a ticketDate
+   */
+  public void setDate(Date date){
+
+    if(ticketDate == null){
+
+      ticketDate = date;
+
+    }
+  }
+
+  /**
+   * Retorna la fecha del dia
+   * @return retorna la fecha, si no se ha inicializado retorna null
+   */
+  public Date getDate(){
+
+    Date result;
+    if(ticketDate != null)
+      result = ticketDate;
+    else
+      result = null;
+
+    return result;
+
+  }
+
 
 }

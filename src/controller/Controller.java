@@ -74,17 +74,19 @@ public class Controller {
 	
 
 	public void loadMovingViolations() {
-		
+
+		manager.loadMovingViolationsJanuary("data/Moving_Violations_Issued_in_January_2018_ordered.csv");
+		manager.loadMovingViolations("data/Moving_Violations_Issued_in_February_2018_ordered.csv");
 	
 	}
 	
 	public IQueue <VODaylyStatistic> getDailyStatistics () {
 		// TODO
-		return null;
+		return manager.getDailyStatistics();
 	}
 	
 	public IStack <VOMovingViolations> nLastAccidents(int n) {
 		// TODO
-		return null;
+		return manager.nLastAccidents(n);
 	}
 }
