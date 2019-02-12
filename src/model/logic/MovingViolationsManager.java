@@ -87,6 +87,7 @@ public class MovingViolationsManager {
           Si la fecha del actual es diferente de la fecha del anterior se registra el dia, de lo
           contrario la informacion del dia sigue incrementando
            */
+
           if(dayStats.getDate() != null){
 
             if(dayStats.getDate().equals(ticketDate)){
