@@ -81,14 +81,26 @@ public class VODaylyStatistic {
     return result;
 
   }
-	public Date darFecha()
-	{
-		return ticketDate;
-	}
-	
-	public short darTotalAMT()
-	{
-		return fineAMTTotal;
-	}
+
+  /**
+   * Devuelve la cantidad de infracciones que fueron accidentes en el dia
+   * @return cantidad de infracciones del dia
+   */
+  public int getDayAccidents(){
+
+    return dayAccidents;
+
+  }
+
+  /**
+   * Devuelve la cantidad total de AMT pagados por los infractores en el dia
+   * @return cantidad total de AMT del dia
+   */
+  public short getFineAMTTotal(){
+
+    return fineAMTTotal;
+
+  }
+
 
 }
