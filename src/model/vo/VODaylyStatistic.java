@@ -15,7 +15,7 @@ public class VODaylyStatistic {
   /**
    * valor AMT pagado por el infractor de la multa
    */
-  private short fineAMTTotal;
+  private int  fineAMTTotal;
 
   /**
    * cantidad de accidentes del dia
@@ -26,6 +26,8 @@ public class VODaylyStatistic {
    * fecha del dia
    */
   private Date ticketDate;
+  
+  private int size = 0;
 
   /**
    * Constructor vacio de la clase
@@ -47,7 +49,7 @@ public class VODaylyStatistic {
    * incrementa el total AMT del dia
    * @param amt valor que se agrega al total
    */
-  public void increaseTotalAMT(short amt){
+  public void increaseTotalAMT(int amt){
 
     fineAMTTotal += amt;
 
@@ -96,11 +98,21 @@ public class VODaylyStatistic {
    * Devuelve la cantidad total de AMT pagados por los infractores en el dia
    * @return cantidad total de AMT del dia
    */
-  public short getFineAMTTotal(){
+  public int getFineAMTTotal(){
 
     return fineAMTTotal;
 
   }
-
+  
+  public void increaseSize() {
+	  
+	  size++;
+	  
+  }
+ public int getSize() {
+	  
+	   return size;
+	  
+  }
 
 }
