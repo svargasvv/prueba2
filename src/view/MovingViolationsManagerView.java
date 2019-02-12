@@ -26,8 +26,8 @@ public class MovingViolationsManagerView
 		System.out.println("Se encontraron "+ dailyStatistics.size() + " elementos");
 		for (VODaylyStatistic dayStatistic : dailyStatistics) 
 		{
-			//TODO
-			System.out.println("2018-01-01 - accidentes:	100,	infracciones:	200,	multas totales:	$10,000  " );;
+			System.out.println(dayStatistic.getDate().toString() +" - accidentes: "+ dayStatistic.getDayAccidents()+ " , infracciones:"
+					+ dayStatistic.getSize()+ ", multas totales: " + dayStatistic.getFineAMTTotal());
 		}
 	}
 	

@@ -45,7 +45,7 @@ public class MovingViolationsManager {
       Scanner sc = new Scanner(archivo);
 
       String line = sc.nextLine();
-      System.out.println(line);
+  
 
       VODaylyStatistic dayStats = new VODaylyStatistic();
 
@@ -68,8 +68,10 @@ public class MovingViolationsManager {
             datosActual.add(st.nextToken());
 
           }
+          
+          
 
-          System.out.println(datosActual.get(0));
+        
 
           if(counter == 84020){
             System.out.println("Line found");
@@ -91,25 +93,28 @@ public class MovingViolationsManager {
           if(dayStats.getDate() != null){
 
             if(dayStats.getDate().equals(ticketDate)){
-              dayStats.increaseTotalAMT(Short.valueOf(datosActual.get(8)));
+              dayStats.increaseTotalAMT(Integer.valueOf(datosActual.get(8)));
+              dayStats.increaseSize();
               if(huboAccidente)
                 dayStats.increaseDayAccidents();
             }
             else{
               statisticsQueue.enqueue(dayStats);
               dayStats = new VODaylyStatistic();
-              dayStats.increaseTotalAMT(Short.valueOf(datosActual.get(8)));
+              dayStats.increaseTotalAMT(Integer.valueOf(datosActual.get(8)));
               if(huboAccidente)
                 dayStats.increaseDayAccidents();
+              dayStats.increaseSize();
             }
 
           }
           //Si aun no se ha inicializado el primer dia
           else{
             dayStats.setDate(ticketDate);
-            dayStats.increaseTotalAMT(Short.valueOf(datosActual.get(8)));
+            dayStats.increaseTotalAMT(Integer.valueOf(datosActual.get(8)));
             if(huboAccidente)
               dayStats.increaseDayAccidents();
+            dayStats.increaseSize();
           }
 
           violationsStack.push(
@@ -131,8 +136,8 @@ public class MovingViolationsManager {
     } catch (FileNotFoundException e) {
       e.printStackTrace();
     }
-
-    System.out.println(counter + " lineas cargadas con exito");
+    
+    System.out.println(statisticsQueue.size());
   }
 
   /**
